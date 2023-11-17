@@ -21,6 +21,17 @@ public class PacienteService {
         return pacienteRepository.findById(id);
     }
     
+    public List<Paciente> buscarPacientes(String term) {
+        Long id;
+        try {
+            id = Long.parseLong(term);
+        } catch (NumberFormatException e) {
+            id = null;
+        }
+
+        return pacienteRepository.findByNombreContainingIgnoreCaseOrIdOrEspecieContainingIgnoreCase(term, id, term);
+    }
+    
     public void saveOrUpdate(Paciente paciente){
         pacienteRepository.save(paciente);
     }

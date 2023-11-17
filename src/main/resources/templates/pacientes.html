@@ -1,0 +1,69 @@
+<<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+    <head>
+        <title>Pacientes</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                    </head>
+                    <body>
+                        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                            <a class="navbar-brand" href="#">Control de pacientes</a>
+                            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link" th:href="@{/pacientes}">Control de pacientes</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+ 
+                        <div class="container">
+                            <form action="/pacientes/buscar" method="GET">
+                                <div class="form-group">
+                                    <label for="search">Buscar Paciente:</label>
+                                    <input type="text" name="search" class="form-control" id="search" placeholder="Nombre, especie, raza, etc.">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                            </form>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <h1>Lista de pacientes</h1>
+                            </div>
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Especie</th>
+                                        <th scope="col">Raza</th>
+                                        <th scope="col">Sexo</th>
+                                        <th scope="col">Color</th>
+                                        <th scope="col">Pelaje</th>
+                                        <th scope="col">Fecha de nacimiento</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="paciente : ${pacientes}">
+                                        <td th:text="${paciente.id}">Id</td>
+                                        <td th:text="${paciente.nombre}">Nombre</td>
+                                        <td th:text="${paciente.especie}">Especie</td>
+                                        <td th:text="${paciente.raza}">Raza</td>
+                                        <td th:text="${paciente.sexo}">Sexo</td>
+                                        <td th:text="${paciente.color}">Color</td>
+                                        <td th:text="${paciente.pelaje}">Pelaje</td>
+                                        <td th:text="${paciente.fechaNacimiento}">Fecha de nacimiento</td>
+                                        <td th:text="${paciente.cliente?.nombres}">Cliente</td>
+                                        <td>
+                                            <a th:href="@{/pacientes/editar/{id}(id=${paciente.id})}" class="btn btn-info">Editar</a>
+                                            <a th:href="@{/pacientes/{id}(id=${paciente.id})}" class="btn btn-danger">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </body>
+                    </html>

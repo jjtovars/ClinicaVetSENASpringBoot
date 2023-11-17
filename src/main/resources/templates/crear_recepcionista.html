@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+    <head>
+        <title>Registro de Recepcionistas</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                    </head>
+                    <body>
+                        
+                        
+                        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                            <a class="navbar-brand" href="@{/recepcionistas}">Control de Recepcionistas</a>
+                            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link"
+                                                            th:href="@{/recepcionistas}">Control de Recepcionistas</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                        
+                        
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                                    <h1 class="text-center">Registro de Recepcionista</h1>
+                                    <div class="card-body">
+                                        <form th:action="@{/recepcionistas}" th:object="${recepcionista}" method="POST">
+                                            <div class="form-group">
+                                                <label>Identificacion :</label>
+                                                <input type="text" name="identificacion" th:field="*{identificacion}" class="form-control" placeholder="Digite la Identificacion: "></input>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Nombres :</label>
+                                                <input type="text" name="nombres" th:field="*{nombres}" class="form-control" placeholder="Digite los nombres del recepcionista: "></input>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Apellidos :</label>
+                                                <input type="text" name="apellidos" th:field="*{apellidos}" class="form-control" placeholder="Digite los apellidos del recepcionista: "></input>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Direccion :</label>
+                                                <input type="text" name="direccion" th:field="*{direccion}" class="form-control" placeholder="Digite la direccion de residencia: "></input>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Telefono :</label>
+                                                <input type="text" name="telefono" th:field="*{telefono}" class="form-control" placeholder="Digite el telefono del recepcionista: "></input>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Email :</label>
+                                                <input type="email" name="email" th:field="*{correo}" class="form-control" placeholder="Digite el email del cliente: "></input>
+                                            </div>
+                                            
+                                            <div class="box-footer">
+                                                <button class="btn btn-success">Guardar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </body>
+                    </html>

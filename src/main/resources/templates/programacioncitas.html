@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+    <head>
+        <title>Programacion de Citas</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                    </head>
+                    <body>
+                        
+                      
+                        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                            <a class="navbar-brand" href="#">Control de Programacion de Citas</a>
+                            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link"
+                                                            th:href="@{/programacioncitas}">Control de Programacion de Citas</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                       
+                        
+                        <div class="container">
+                            <div class="row">
+                                <h1>Lista de Programacion de Citas</h1>
+                            </div>
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Fecha Creacion</th>
+                                        <th scope="col">Fecha Cita</th>
+                                        <th scope="col">Paciente</th>
+                                        <th scope="col">Veterinario</th>
+                                        <th scope="col">Especialidad</th>
+                                        <th scope="col">Recepcionista</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="programacioncita : ${programacioncitas}">
+                                        <td th:text="${programacioncita.id}" scope="col">Id</td>
+                                        <td th:text="${programacioncita.fecha_creacion}" scope="col">Fecha Creacion</td>
+                                        <td th:text="${programacioncita.fecha_cita}" scope="col">Fecha Cita</td>
+                                        <td th:text="${programacioncita.paciente?.nombre}" scope="col">Paciente</td>
+                                        <td th:text="${programacioncita.veterinario?.nombres}" scope="col">Veterinario</td>
+                                        <td th:text="${programacioncita.veterinario?.especialidad}" scope="col">Especialidad</td>
+                                        <td th:text="${programacioncita.recepcionista?.nombres}" scope="col">Especialidad</td>
+                                        <td>
+                                            <a th:href="@{/programacioncitas/editar/{id}(id=${programacioncita.id})}" class="btn btn-info">Editar</a>
+                                            <a th:href="@{/programacioncitas/{id}(id=${programacioncita.id})}" class="btn btn-danger">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </body>
+                    </html>
